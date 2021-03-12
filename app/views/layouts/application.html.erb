@@ -10,6 +10,26 @@
   </head>
 
   <body>
+    
+    <header>
+      <ul>
+        <% if user_signed_in?  %>
+          <li>
+            <%= link_to new_post_image_path do %>Post_form<% end %>
+          </li>
+          <li>
+            <%= link_to(destroy_user_session_path, method: :delete) do %><i>Log_out</i><% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to new_user_registration_path do %><i>new_user</i><% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path do %><i>Log_in</i><% end %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
     <%= yield %>
   </body>
 </html>
